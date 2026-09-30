@@ -28,7 +28,7 @@ export const GameBoard = () => {
   }, [handleKeyDown]);
 
   useEffect(() => {
-    const gameSpeed = level === 1 ? 100 : level === 2 ? 85 : 70; 
+    const gameSpeed = 100;
     
     const interval = setInterval(() => {
       let currentItems = itemsRef.current.map(item => ({ ...item, y: item.y + 5 }));
@@ -61,12 +61,7 @@ export const GameBoard = () => {
         collectFlower();
         const current = stateRef.current;
         if (current.flowers + 1 >= current.flowersNeeded) {
-          const premios = [
-            "Vale por tener la razón sin que Dai pueda reclamar",
-            "Vale por lo que quieras (Escribe tu deseo)",
-            "Vale por un Hot Wheel real (a entregar en persona)"
-          ];
-          winLevel(premios[current.level - 1]);
+          winLevel("Vale por tener la razón sin que Dai pueda reclamar");
         }
       }
 
@@ -79,17 +74,11 @@ export const GameBoard = () => {
     return () => clearInterval(interval);
   }, [collectFlower, loseLife, winLevel, level]);
 
-  const bgColors = {
-    1: 'bg-green-800',
-    2: 'bg-blue-900', 
-    3: 'bg-slate-700' 
-  };
-
   return (
-    <div className={`relative w-full max-w-md h-[600px] mx-auto overflow-hidden border-4 border-slate-600 rounded-lg shadow-2xl ${bgColors[level]}`}>
+    <div className="relative w-full max-w-md h-[600px] mx-auto overflow-hidden border-4 border-slate-600 rounded-lg shadow-2xl" style={{ backgroundImage: "url('/galaxy_bg.jpg')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
       <div className="absolute top-0 left-0 w-full p-4 flex justify-between text-white z-10 bg-black/40">
         <span className="font-bold">Nivel {level}</span>
-        <span className="font-bold text-yellow-400">🏀 {flowers} / {flowersNeeded}</span>
+        <span className="font-bold text-green-400">🏀 {flowers} / {flowersNeeded}</span>
         <span>{'❤️'.repeat(lives)}</span>
       </div>
 

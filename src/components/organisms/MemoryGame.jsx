@@ -10,7 +10,6 @@ export const MemoryGame = () => {
   const [solved, setSolved] = useState([]);
   const [disabled, setDisabled] = useState(false);
 
-  // Inicializar y mezclar las cartas al cargar
   useEffect(() => {
     const shuffledCards = [...ITEMS, ...ITEMS]
       .sort(() => Math.random() - 0.5)
@@ -29,10 +28,8 @@ export const MemoryGame = () => {
       const [firstIndex, secondIndex] = newFlipped;
 
       if (cards[firstIndex].content === cards[secondIndex].content) {
-        // ¡Coinciden!
         setSolved((prev) => {
           const newSolved = [...prev, firstIndex, secondIndex];
-          // Verificar si ya ganó
           if (newSolved.length === cards.length) {
             setTimeout(() => {
               winLevel("Vale por lo que quieras (Escribe tu deseo)");
@@ -43,7 +40,6 @@ export const MemoryGame = () => {
         setFlipped([]);
         setDisabled(false);
       } else {
-        // No coinciden, se voltean de nuevo después de 1 segundo
         setTimeout(() => {
           setFlipped([]);
           setDisabled(false);
@@ -57,7 +53,7 @@ export const MemoryGame = () => {
       <div className="bg-slate-800 p-6 rounded-xl shadow-2xl border-2 border-slate-600 w-full">
         <div className="flex justify-between items-center mb-6">
           <span className="text-white font-bold">Pares: {solved.length / 2} / 8</span>
-          <span className="text-yellow-400 font-bold">Nivel 2</span>
+          <span className="text-green-400 font-bold">Nivel 2</span>
         </div>
         
         <div className="grid grid-cols-4 gap-3 md:gap-4">
@@ -69,11 +65,11 @@ export const MemoryGame = () => {
                 onClick={() => handleCardClick(index)}
                 className={`
                   aspect-square flex items-center justify-center text-3xl md:text-4xl rounded-lg transition-all duration-300 transform perspective-1000
-                  ${isFlipped ? 'bg-slate-100 rotate-y-180 shadow-inner' : 'bg-blue-600 hover:bg-blue-500 shadow-md'}
+                  ${isFlipped ? 'bg-cyan-50 text-cyan-900 rotate-y-180 shadow-inner' : 'bg-slate-700 hover:bg-slate-600 shadow-md border-2 border-green-500/30'}
                   ${solved.includes(index) ? 'opacity-50' : ''}
                 `}
               >
-                {isFlipped ? card.content : '❓'}
+                {isFlipped ? card.content : <span className="text-green-400 font-black text-4xl">?</span>}
               </button>
             );
           })}

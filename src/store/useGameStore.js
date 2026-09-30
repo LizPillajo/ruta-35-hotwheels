@@ -35,7 +35,6 @@ export const useGameStore = create((set) => ({
   nextLevel: () => set((state) => ({
     level: state.level + 1,
     flowers: 0,
-    flowersNeeded: state.level === 1 ? 15 : 20, 
     showVoucher: false,
     isPlaying: true
   })),
@@ -43,7 +42,7 @@ export const useGameStore = create((set) => ({
   finishGame: () => set({ 
     isFinished: true, 
     showVoucher: false, 
-    isPlaying: false 
+    isPlaying: true 
   }),
 
   resetGame: () => set({

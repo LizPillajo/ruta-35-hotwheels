@@ -13,7 +13,7 @@ export const StartMenu = () => {
           Operación Hot Wheels
         </h2>
         <p className="text-slate-400 max-w-md mx-auto mt-4">
-          De Huaca a Quito hay un largo camino. Recolecta las flores amarillas y esquiva los obstáculos para ganar tu recompensa.
+          Recolecta los balones y esquiva los obstáculos para ganar tu recompensa.
         </p>
       </div>
       
