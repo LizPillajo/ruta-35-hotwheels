@@ -4,7 +4,7 @@ import { useGameStore } from '../../store/useGameStore';
 import { Button } from '../atoms/Button';
 
 export const Voucher = () => {
-  const { level, currentVoucher, nextLevel } = useGameStore();
+  const { level, currentVoucher, nextLevel, finishGame } = useGameStore();
   const [wish, setWish] = useState('');
   const [wishSaved, setWishSaved] = useState(false);
 
@@ -79,8 +79,11 @@ export const Voucher = () => {
         )}
       </div>
 
-      <Button onClick={nextLevel} variant="primary">
-        {level === 3 ? "Volver al Inicio 🔄" : "Siguiente Nivel 🏁"}
+      <Button 
+        onClick={level === 3 ? finishGame : nextLevel} 
+        variant="primary"
+      >
+        {level === 3 ? "Reclamar Premios y Salir 🎁" : "Siguiente Nivel 🏁"}
       </Button>
     </div>
   );

@@ -58,7 +58,7 @@ export const GameBoard = () => {
       setItems(currentItems);
 
       if (hitFlower) {
-        collectFlower(); // Suma exactamente 1
+        collectFlower();
         const current = stateRef.current;
         if (current.flowers + 1 >= current.flowersNeeded) {
           const premios = [
@@ -109,7 +109,7 @@ export const GameBoard = () => {
       >
         🏎️
       </div>
-      
+
       <div className="absolute bottom-4 left-0 w-full flex justify-between px-6 z-20 sm:hidden">
         <button 
           onClick={() => setCarPosition((prev) => Math.max(10, prev - 15))}
