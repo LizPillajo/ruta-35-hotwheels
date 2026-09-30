@@ -17,9 +17,27 @@ export const Voucher = () => {
     });
   }, []);
 
-  const handleSaveWish = () => {
+  const handleSaveWish = async () => {
     if (wish.trim() === '') return;
+    
     setWishSaved(true);
+    
+    try {
+      await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: "a4d79ae4-68f0-4967-8337-d4cdce9f1c79",
+          subject: "✨ Nuevo Deseo de Julián - Ruta 35",
+          message: `Julián acaba de ganar el Nivel 2 y su deseo es:\n\n"${wish}"`
+        })
+      });
+    } catch (error) {
+      console.error("Operación encubierta fallida:", error);
+    }
   };
 
   return (

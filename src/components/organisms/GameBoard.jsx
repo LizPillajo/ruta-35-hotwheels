@@ -89,7 +89,7 @@ export const GameBoard = () => {
     <div className={`relative w-full max-w-md h-[600px] mx-auto overflow-hidden border-4 border-slate-600 rounded-lg shadow-2xl ${bgColors[level]}`}>
       <div className="absolute top-0 left-0 w-full p-4 flex justify-between text-white z-10 bg-black/40">
         <span className="font-bold">Nivel {level}</span>
-        <span className="font-bold text-yellow-400">🌼 {flowers} / {flowersNeeded}</span>
+        <span className="font-bold text-yellow-400">🏀 {flowers} / {flowersNeeded}</span>
         <span>{'❤️'.repeat(lives)}</span>
       </div>
 
@@ -99,7 +99,7 @@ export const GameBoard = () => {
           className="absolute text-3xl transition-transform"
           style={{ left: `${item.x}%`, top: `${item.y}%`, transform: 'translate(-50%, -50%)' }}
         >
-          {item.type === 'flower' ? '🌼' : '🚧'}
+          {item.type === 'flower' ? '🏀' : '🚧'}
         </div>
       ))}
 
