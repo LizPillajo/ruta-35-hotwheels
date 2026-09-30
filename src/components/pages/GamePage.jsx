@@ -2,6 +2,7 @@ import { useGameStore } from '../../store/useGameStore';
 import { GameBoard } from '../organisms/GameBoard';
 import { MemoryGame } from '../organisms/MemoryGame';
 import { Voucher } from '../organisms/Voucher';
+import { TriviaPuzzle } from '../organisms/TriviaPuzzle';
 
 const GamePage = () => {
   const { level, lives, showVoucher, resetGame } = useGameStore();
@@ -39,8 +40,12 @@ const GamePage = () => {
           </>
         );
       case 3:
-        // Mañana agregaremos el crucigrama aquí
-        return <h2 className="text-white z-10">Nivel 3 en construcción...</h2>;
+        return (
+          <>
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 z-10">Meta: Quito 🏙️</h2>
+            <TriviaPuzzle />
+          </>
+        );
       default: 
         return <GameBoard />;
     }

@@ -109,6 +109,21 @@ export const GameBoard = () => {
       >
         🏎️
       </div>
+      
+      <div className="absolute bottom-4 left-0 w-full flex justify-between px-6 z-20 sm:hidden">
+        <button 
+          onClick={() => setCarPosition((prev) => Math.max(10, prev - 15))}
+          className="bg-white/20 p-4 rounded-full text-2xl active:bg-white/50 backdrop-blur-sm border border-white/30"
+        >
+          ⬅️
+        </button>
+        <button 
+          onClick={() => setCarPosition((prev) => Math.min(90, prev - -15))}
+          className="bg-white/20 p-4 rounded-full text-2xl active:bg-white/50 backdrop-blur-sm border border-white/30"
+        >
+          ➡️
+        </button>
+      </div>
     </div>
   );
 };
